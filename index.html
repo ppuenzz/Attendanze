@@ -17,33 +17,6 @@
   <!-- เสียงคลิก -->
   <audio id="clickSound" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_0b1b1efb69.mp3?filename=click-124467.mp3"></audio>
 
-  <script>
-    // เสียง + เอฟเฟกต์คลิกปุ่ม
-    document.querySelectorAll('.btn').forEach(button => {
-      button.addEventListener('click', () => {
-        const sound = document.getElementById('clickSound');
-        sound.currentTime = 0;
-        sound.play();
-
-        button.style.transform = "scale(0.95)";
-        setTimeout(() => {
-          button.style.transform = "scale(1)";
-        }, 150);
-      });
-    });
-
-    // ไปหน้า Clock (ยังไม่ทำ)
-    function goToClock() {
-      alert("Clock In/Out page is under construction.");
-      // window.location.href = "clock.html"; // ถ้ามีหน้า clock.html แล้วให้เปิดบรรทัดนี้
-    }
-
-    // ไปหน้า Admin
-    function goToAdmin() {
-      setTimeout(() => {
-        window.location.href = "admin.html";
-      }, 200); // รอให้เสียงเล่นก่อนนิดนึง
-    }
-  </script>
+  
 </body>
 </html>
