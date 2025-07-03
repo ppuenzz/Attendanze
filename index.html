@@ -14,3 +14,22 @@
 <button class="btn" onclick="goToAdmin()">Admin</button>
   </div>
   <audio id="clickSound" src="https://cdn.pixabay.com/download/audio/2022/03
+
+    <script>
+  document.querySelectorAll('.btn').forEach(button => {
+    button.addEventListener('click', () => {
+      document.getElementById('clickSound').play();
+      button.style.transform = "scale(0.95)";
+      setTimeout(() => {
+        button.style.transform = "scale(1)";
+      }, 150);
+    });
+  });
+
+  function goToAdmin() {
+    document.getElementById('clickSound').play();
+    setTimeout(() => {
+      window.location.href = 'admin.html';
+    }, 200); // รอให้เสียงเล่นเสร็จก่อน
+  }
+</script>
