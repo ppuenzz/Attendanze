@@ -1,13 +1,6 @@
-
-// เล่นเสียง + เอฟเฟกต์คลิก
+// เอฟเฟกต์เวลากดปุ่ม (เด้งเบาๆ)
 document.querySelectorAll('.btn').forEach(button => {
   button.addEventListener('click', () => {
-    const sound = document.getElementById('clickSound');
-    if (sound) {
-      sound.currentTime = 0;
-      sound.play();
-    }
-
     button.style.transform = "scale(0.95)";
     setTimeout(() => {
       button.style.transform = "scale(1)";
@@ -15,21 +8,19 @@ document.querySelectorAll('.btn').forEach(button => {
   });
 });
 
-// ฟังก์ชันสำหรับปุ่มแต่ละหน้า
+// ไปหน้า Clock In/Out (ถ้ายังไม่มีไฟล์จะขึ้น alert)
 function goToClock() {
   alert("Clock In/Out page is under construction.");
+  // ถ้ามี clock.html แล้วให้ใช้ด้านล่างแทน
   // window.location.href = "clock.html";
 }
 
+// ไปหน้า Admin
 function goToAdmin() {
-  setTimeout(() => {
-    window.location.href = "admin.html";
-  }, 200);
+  window.location.href = "admin.html";
 }
 
+// (option) กลับหน้าแรกจาก admin
 function goHome() {
-  setTimeout(() => {
-    window.location.href = "index.html";
-  }, 200);
+  window.location.href = "index.html";
 }
-
