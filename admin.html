@@ -1,63 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Admin Panel</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Work Attendance</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
-    <h1>Admin Panel</h1>
+    <h1>Welcome</h1>
 
-    <button class="btn" onclick="goHome()">Home</button>
-
-    <div id="authContainer">
-      <div id="loginForm">
-        <h2>Login</h2>
-        <input type="text" id="loginUser" placeholder="Username" class="inputField">
-        <input type="password" id="loginPass" placeholder="Password" class="inputField">
-        <button class="btn" onclick="login()">Login</button>
-        <p>Don't have an account? <a href="#" onclick="toggleForm()">Sign up</a></p>
-      </div>
-
-      <div id="signupForm" style="display: none;">
-        <h2>Sign Up</h2>
-        <input type="text" id="signupUser" placeholder="Username" class="inputField">
-        <input type="password" id="signupPass" placeholder="Password" class="inputField">
-        <button class="btn" onclick="signUp()">Sign Up</button>
-        <p>Already have an account? <a href="#" onclick="toggleForm()">Login</a></p>
-      </div>
-    </div>
+    <button class="btn" onclick="goToClock()">Clock In / Out</button>
+    <button class="btn" onclick="goToAdmin()">Admin</button>
   </div>
 
+  <!-- เสียงคลิก -->
   <audio id="clickSound" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_0b1b1efb69.mp3?filename=click-124467.mp3"></audio>
-  <script src="script.js"></script>
+
   <script>
-    function toggleForm() {
-      const login = document.getElementById('loginForm');
-      const signup = document.getElementById('signupForm');
-      login.style.display = login.style.display === 'none' ? 'block' : 'none';
-      signup.style.display = signup.style.display === 'none' ? 'block' : 'none';
+    // เสียง + เอฟเฟกต์คลิกปุ่ม
+    document.querySelectorAll('.btn').forEach(button => {
+      button.addEventListener('click', () => {
+        const sound = document.getElementById('clickSound');
+        sound.currentTime = 0;
+        sound.play();
+
+        button.style.transform = "scale(0.95)";
+        setTimeout(() => {
+          button.style.transform = "scale(1)";
+        }, 150);
+      });
+    });
+
+    // ไปหน้า Clock (ยังไม่ทำ)
+    function goToClock() {
+      alert("Clock In/Out page is under construction.");
+      // window.location.href = "clock.html"; // ถ้ามีหน้า clock.html แล้วให้เปิดบรรทัดนี้
     }
 
-    function goHome() {
-      document.getElementById('clickSound').play();
-      setTimeout(() => location.href = 'index.html', 200);
-    }
-
-    function login() {
-      document.getElementById('clickSound').play();
-      const user = document.getElementById('loginUser').value;
-      const pass = document.getElementById('loginPass').value;
-      alert(`Logging in as ${user}`);
-    }
-
-    function signUp() {
-      document.getElementById('clickSound').play();
-      const user = document.getElementById('signupUser').value;
-      const pass = document.getElementById('signupPass').value;
-      alert(`Signed up as ${user}`);
+    // ไปหน้า Admin
+    function goToAdmin() {
+      setTimeout(() => {
+        window.location.href = "admin.html";
+      }, 200); // รอให้เสียงเล่นก่อนนิดนึง
     }
   </script>
 </body>
