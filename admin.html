@@ -3,46 +3,43 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Work Attendance</title>
+  <title>Admin Panel</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
-    <h1>Welcome</h1>
+    <h1>Admin Panel</h1>
 
-    <button class="btn" onclick="goToClock()">Clock In / Out</button>
-    <button class="btn" onclick="goToAdmin()">Admin</button>
+    <!-- ปุ่มกลับหน้าแรก -->
+    <button class="btn" onclick="goHome()">Home</button>
+
+    <!-- แบบฟอร์มล็อกอิน -->
+    <div id="loginForm">
+      <h2>Login</h2>
+      <input type="text" id="loginUsername" placeholder="Username" class="inputField" />
+      <input type="password" id="loginPassword" placeholder="Password" class="inputField" />
+      <button class="btn">Login</button>
+      <p>Don't have an account? <a href="#" onclick="toggleForm()">Sign Up</a></p>
+    </div>
+
+    <!-- แบบฟอร์มสมัครสมาชิก -->
+    <div id="signupForm" style="display: none;">
+      <h2>Sign Up</h2>
+      <input type="text" id="signupUsername" placeholder="Username" class="inputField" />
+      <input type="password" id="signupPassword" placeholder="Password" class="inputField" />
+      <button class="btn">Sign Up</button>
+      <p>Already have an account? <a href="#" onclick="toggleForm()">Login</a></p>
+    </div>
   </div>
 
-  <!-- เสียงคลิก -->
-  <audio id="clickSound" src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_0b1b1efb69.mp3?filename=click-124467.mp3"></audio>
-
+  <script src="script.js"></script>
   <script>
-    // เสียง + เอฟเฟกต์คลิกปุ่ม
-    document.querySelectorAll('.btn').forEach(button => {
-      button.addEventListener('click', () => {
-        const sound = document.getElementById('clickSound');
-        sound.currentTime = 0;
-        sound.play();
-
-        button.style.transform = "scale(0.95)";
-        setTimeout(() => {
-          button.style.transform = "scale(1)";
-        }, 150);
-      });
-    });
-
-    // ไปหน้า Clock (ยังไม่ทำ)
-    function goToClock() {
-      alert("Clock In/Out page is under construction.");
-      // window.location.href = "clock.html"; // ถ้ามีหน้า clock.html แล้วให้เปิดบรรทัดนี้
-    }
-
-    // ไปหน้า Admin
-    function goToAdmin() {
-      setTimeout(() => {
-        window.location.href = "admin.html";
-      }, 200); // รอให้เสียงเล่นก่อนนิดนึง
+    // สลับระหว่างฟอร์ม Login กับ Sign Up
+    function toggleForm() {
+      const login = document.getElementById('loginForm');
+      const signup = document.getElementById('signupForm');
+      login.style.display = login.style.display === 'none' ? 'block' : 'none';
+      signup.style.display = signup.style.display === 'none' ? 'block' : 'none';
     }
   </script>
 </body>
